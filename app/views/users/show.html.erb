@@ -1,3 +1,10 @@
 <div class="row">
 	<h1>Welcome <%= current_user.username %></h1>
 </div>
+<div class="row">
+	<ul>
+		<% @tasks.each do |t| %>
+			<li><%= t.title %> <%= link_to "Update", edit_task_path(t)%> <%= link_to "Delete", t, method: :delete, remote: :true %></li>
+		<% end %>	
+	</ul>
+</div>
