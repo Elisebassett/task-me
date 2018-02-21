@@ -1,2 +1,10 @@
-<h1>Tasks#edit</h1>
-<p>Find me in app/views/tasks/edit.html.erb</p>
+<div class="row">
+	<h2>Update Task</h2>
+</div>
+<div class="row">
+	<%= form_with model: @task do |f| %>
+		<%= f.text_field :title, placeholder: :title %>
+		<%= f.text_area :description, placeholder: :description %>
+		<%= f.submit "Update" %>
+	<% end %>
+</div>
