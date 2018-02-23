@@ -1,0 +1,16 @@
+<li>
+	<!-- a collapsible accordian header has the title -->
+	<div class="collapsible-header">
+		<%= link_to "Complete", task_path(task, task:{complete: !task.complete?}), method: :patch, remote: :true %> 
+		<%= task.complete %> 
+		<%= task.title %> 
+	</div>
+	<!-- inside the accordian, viewer can view description and access edit and trash icons -->
+	<div class="collapsible-body">
+		<span>
+			<%= task.description %>
+			<%= link_to "Update", edit_task_path(task)%>
+			<%= link_to "Delete", task, method: :delete, remote: :true %>
+		</span>
+	</div>
+</li>
