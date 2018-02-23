@@ -19,7 +19,7 @@ class TasksController < ApplicationController
   end
 
   def update
-    @task = Task.update(task_params)
+    Task.find(params[:id]).update(task_params)
     redirect_to current_user
   end
 
