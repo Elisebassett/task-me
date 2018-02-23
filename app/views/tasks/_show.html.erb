@@ -1,7 +1,8 @@
 <li>
 	<!-- a collapsible accordian header has the title -->
 	<div class="collapsible-header">
-		<%= link_to "Complete", task_path(task, task:{complete: !task.complete?}), method: :patch, remote: :true %> 
+		<%= link_to nil, task_path(task, task:{complete: !task.complete?}), id: "complete", type: "checkbox", method: :patch, remote: :true %> 
+		<%= label_tag "complete" %>
 		<%= task.complete %> 
 		<%= task.title %> 
 	</div>
