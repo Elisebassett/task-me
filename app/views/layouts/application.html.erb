@@ -1,16 +1,33 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>TodoReactRails</title>
+    <title>Task Me</title>
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <nav>
+      <div class="nav-wrapper">
+        <a href="/" class="brand-logo img"><%# image_tag asset_url('logo_yellow.png') %></a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <% if current_user %>
+            <li><%= link_to "New Task", new_task_path %></li>
+            <li><%= link_to "Edit User", edit_user_registration_path %></li>
+            <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
+          <% else %>
+            <li><%= link_to "Login", new_user_session_path %></li>
+            <li><%= link_to "Sign up", new_user_registration_path %></li>
+          <% end %>
+        </ul>
+      </div>
+    </nav>
   	<p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
+    <div class="container">
     <%= yield %>
+    <div id="remote_container"></div>
+  </div>
   </body>
 </html>

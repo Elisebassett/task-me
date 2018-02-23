@@ -1,2 +1,7 @@
-<h1>Tasks#new</h1>
-<p>Find me in app/views/tasks/new.html.erb</p>
+<h2>Create New Task</h2>
+
+<%= form_with model: @task do |f| %>
+	<%= f.text_field :title, placeholder: "Title" %>
+	<%= f.text_area :description, placeholder: "Description" %>
+	<%= f.submit "Create" %>
+<% end %>

@@ -1,0 +1,19 @@
+<div class="row">
+	<h1>Welcome <%= current_user.username %></h1>
+</div>
+<div class="row">
+	<ul class="collapsible popout" data-collapsible="accordion">
+		<% @tasks.each do |t| %>  
+			<li>
+				<div class="collapsible-header">
+					<%= link_to "Complete", task_path(t, task:{complete: !t.complete?}), method: :patch, remote: :true %> 
+					<%= t.complete %> 
+					<%= t.title %> 
+ 					<%= link_to "Update", edit_task_path(t)%> 
+					<%= link_to "Delete", t, method: :delete, remote: :true %>
+				</div>
+				<div class="collapsible-body"><span><%= t.description %></span></div>
+			</li>
+		<% end %>	
+	</ul>
+</div>
