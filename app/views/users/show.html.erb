@@ -1,19 +1,34 @@
 <div class="row">
 	<h1>Welcome <%= current_user.username %></h1>
 </div>
+<!-- This section is the task display. -->
 <div class="row">
-	<ul class="collapsible popout" data-collapsible="accordion">
-		<% @tasks.each do |t| %>  
-			<li>
-				<div class="collapsible-header">
-					<%= link_to "Complete", task_path(t, task:{complete: !t.complete?}), method: :patch, remote: :true %> 
-					<%= t.complete %> 
-					<%= t.title %> 
-					<%= link_to "Update", edit_task_path(t)%> 
-					<%= link_to "Delete", t, method: :delete, remote: :true %>
-				</div>
-				<div class="collapsible-body"><span><%= t.description %></span></div>
-			</li>
-		<% end %>	
-	</ul>
+	<!-- Tabs to view uncompleted and completed tasks -->
+	<div class="col s12">
+    <ul class="tabs">
+      <li class="tab col s3"><a class="active"href="#todo">Task List</a></li>
+      <li class="tab col s3"><a href="#completed">Completed Tasks</a></li>
+    </ul>
+  </div>
+  <!--****** Task list view *******-->
+  <div id="todo" class="col s12">
+  	<ul class="collapsible popout" data-collapsible="accordion">
+			<% @tasks.each do |task| %>  
+				<% if task.complete == false %>
+					<%= render "tasks/show", task: task %>
+				<% end %> <!-- if statement -->
+			<% end %>	<!-- loop -->
+		</ul>
+  </div>
+	<!--****** Completed task list view *******-->
+  <div id="completed" class="col s12">
+		<ul class="collapsible popout" data-collapsible="accordion">
+			<% @tasks.each do |task| %>  
+				<% if task.complete == true %>
+					<%= render "tasks/show", task: task %>
+				<% end %> <!-- if statement -->
+			<% end %>	<!-- loop -->
+		</ul>	
+  </div>
 </div>
+
