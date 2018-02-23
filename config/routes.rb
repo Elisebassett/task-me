@@ -12,7 +12,6 @@ Rails.application.routes.draw do
 	resources :subtasks
 	resources :categories
 	resources :projects
-	
 
   root to: "home#index"
 
