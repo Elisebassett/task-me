@@ -7,16 +7,13 @@ $(document).on('turbolinks:load', function(){
   $('.collapsible').collapsible();
   $('ul.tabs').tabs();
 
-  $('.checkbox').change(function(e){
-  	// e.stopPropagation();
-  	// console.log($(this).attr('id'));
-//   	var id = $(this).closest('.task-container').attr('data-id');
-//   	var complete = $(this).attr('value');
-//   	console.log(id);
-//   	$.ajax({
-//   		url: `/task/${id}`,
-//   		type: 'PATCH',
-//   		data: {complete: !complete?, id: id}
-//   	});
+  $('.checkbox').on("ajax:success", function(e){
+  	console.log('checked!');
   });
+
+  $(document).on('ajax:success', '.destroy_task', function(){
+		$(this).closest('.task-container').remove();
+		$('.' + window.task_container).remove(); 
+	});
+
 });

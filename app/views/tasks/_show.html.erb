@@ -4,18 +4,17 @@
 		<!-- This checkbox is an AJAX patch to toggle the :complete-->
 		<%= check_box_tag :complete, task.id, task.complete, id: "task_#{task.id}", data: {
         remote: true,
-        url: task_path(task, task:{complete: !task.complete?}),
+        url: task_path(task, task: {complete: !task.complete?}),
         method: "PATCH"
       } %> 
 		<%= label_tag "task_#{task.id}", task.title %> 
-		
 	</div>
 	<!-- inside the accordian, viewer can view description and access edit and trash icons -->
 	<div class="collapsible-body">
 		<span>
 			<%= task.description %>
 			<%= link_to "Update", edit_task_path(task)%>
-			<%= link_to "Delete", task, method: :delete, remote: :true %>
+			<%= link_to "Delete", task, method: :delete, remote: :true, class: "destroy_task" %>
 		</span>
 	</div>
 </li>
