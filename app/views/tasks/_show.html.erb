@@ -1,13 +1,14 @@
-<li>
+<li class="task-container" data-id="<%= task.id %>">
 	<!-- a collapsible accordian header has the title -->
 	<div class="collapsible-header">
+		<!-- This checkbox is an AJAX patch to toggle the :complete-->
+		<%= check_box_tag :complete, task.id, task.complete, id: "task_#{task.id}", data: {
+        remote: true,
+        url: task_path(task, task:{complete: !task.complete?}),
+        method: "PATCH"
+      } %> 
+		<%= label_tag "task_#{task.id}", task.title %> 
 		
-		<%= check_box nil, new_task_path, id: "check", type: "checkbox" %> 
-		<%= label_tag "check" %>
-
-		<%= link_to "Complete", task_path(task, task:{complete: !task.complete?}), method: :patch, remote: :true %> 
-		<%= task.complete %> 
-		<%= task.title %> 
 	</div>
 	<!-- inside the accordian, viewer can view description and access edit and trash icons -->
 	<div class="collapsible-body">
