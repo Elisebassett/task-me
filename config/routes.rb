@@ -8,11 +8,15 @@ Rails.application.routes.draw do
       }
 
   resources :users, only: [:show]
+  resources :subtasks
+  resources :categories
+  resources :projects
+
 	resources :tasks
-	resources :subtasks
-	resources :categories
-	resources :projects
+  patch '/task-complete/:id', to: 'tasks#toggle', as: 'task_complete'
+  # custom route for toggling task
 
   root to: "home#index"
+
 
 end

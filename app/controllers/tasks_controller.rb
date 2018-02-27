@@ -23,6 +23,16 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id]).update(task_params)
     redirect_to current_user
   end
+  
+  # toggle method is run when complete switch is clicked
+  def toggle
+    @task = Task.find(params[:id]).update(task_params)
+    respond_to do |format|
+      format.js
+      format.html{redirect_to @user}
+    end
+
+  end
 
   def destroy
     respond_to do |format|

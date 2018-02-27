@@ -16,14 +16,6 @@ cancel_user_registration GET    /users/cancel(.:format)        users/registratio
                          DELETE /users(.:format)               users/registrations#destroy
                          POST   /users(.:format)               users/registrations#create
                     user GET    /users/:id(.:format)           users#show
-                   tasks GET    /tasks(.:format)               tasks#index
-                         POST   /tasks(.:format)               tasks#create
-                new_task GET    /tasks/new(.:format)           tasks#new
-               edit_task GET    /tasks/:id/edit(.:format)      tasks#edit
-                    task GET    /tasks/:id(.:format)           tasks#show
-                         PATCH  /tasks/:id(.:format)           tasks#update
-                         PUT    /tasks/:id(.:format)           tasks#update
-                         DELETE /tasks/:id(.:format)           tasks#destroy
                 subtasks GET    /subtasks(.:format)            subtasks#index
                          POST   /subtasks(.:format)            subtasks#create
              new_subtask GET    /subtasks/new(.:format)        subtasks#new
@@ -48,4 +40,13 @@ cancel_user_registration GET    /users/cancel(.:format)        users/registratio
                          PATCH  /projects/:id(.:format)        projects#update
                          PUT    /projects/:id(.:format)        projects#update
                          DELETE /projects/:id(.:format)        projects#destroy
+                   tasks GET    /tasks(.:format)               tasks#index
+                         POST   /tasks(.:format)               tasks#create
+                new_task GET    /tasks/new(.:format)           tasks#new
+               edit_task GET    /tasks/:id/edit(.:format)      tasks#edit
+                    task GET    /tasks/:id(.:format)           tasks#show
+                         PATCH  /tasks/:id(.:format)           tasks#update
+                         PUT    /tasks/:id(.:format)           tasks#update
+                         DELETE /tasks/:id(.:format)           tasks#destroy
+           task_complete PATCH  /task-complete/:id(.:format)   tasks#toggle
                     root GET    /                              home#index
