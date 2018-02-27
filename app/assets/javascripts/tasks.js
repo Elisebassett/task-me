@@ -8,6 +8,7 @@ $(document).on('turbolinks:load', function(){
 	//materialization lists tab display initialization
   $('ul.tabs').tabs();
 
+  //UJS for destroy task
   $(document).on('ajax:success', '.destroy_task', function(){
 		$(this).closest('.task-container').remove();
 		$(window.task_container).remove(); 

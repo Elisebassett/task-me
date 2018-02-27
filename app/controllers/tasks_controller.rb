@@ -23,7 +23,7 @@ class TasksController < ApplicationController
     redirect_to current_user
   end
   
-  # toggle method is run when complete switch is clicked
+  # toggle method is run when complete checkbox is clicked
   def toggle
     @tasks = current_user.tasks.all
     @task = Task.find(params[:id]).update(task_params)
