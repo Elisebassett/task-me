@@ -3,8 +3,9 @@
 // This is all the materialize JS that has to do with task display
 
 $(document).on('turbolinks:load', function(){
-
+	//materialization task accordian display initialization
   $('.collapsible').collapsible();
+	//materialization lists tab display initialization
   $('ul.tabs').tabs();
 
   $(document).on('ajax:success', '.destroy_task', function(){

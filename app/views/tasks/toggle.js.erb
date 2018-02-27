@@ -1,0 +1,6 @@
+//renders both lists on checkbox boolean toggle and ajax:success
+$('#list-container').html("<%= j render 'tasks/tasks', tasks: @tasks %> ");
+//materialization task accordian display initialization
+$('.collapsible').collapsible();
+//materialization lists tab display initialization
+$('ul.tabs').tabs();
