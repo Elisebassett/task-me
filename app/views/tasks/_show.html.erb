@@ -4,7 +4,7 @@
 		<!-- This checkbox is an AJAX patch to toggle the :complete-->
 		<%= check_box_tag :complete, task.id, task.complete, id: "task_#{task.id}", data: {
         remote: true,
-        url: task_path(task, task: {complete: !task.complete?}),
+        url: task_complete_path(task, task: {complete: !task.complete?}),
         method: "PATCH",
       }, class: "checkbox" %> 
 		<%= label_tag "task_#{task.id}", task.title %> 
