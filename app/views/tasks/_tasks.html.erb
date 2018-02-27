@@ -1,0 +1,20 @@
+<!--****** Task list view *******-->
+<div id="todo" class="col s12">
+	<ul class="collapsible popout" data-collapsible="accordion">
+			<% @tasks.each do |task| %>  
+				<% if task.complete == false %>
+					<%= render "tasks/show", task: task %>
+				<% end %> <!-- if statement -->
+			<% end %>	<!-- loop -->
+		</ul>
+</div>
+	<!--****** Completed task list view *******-->
+<div id="completed" class="col s12">
+	<ul class="collapsible popout" data-collapsible="accordion">
+		<% @tasks.each do |task| %>  
+			<% if task.complete == true %>
+				<%= render "tasks/show", task: task %>
+			<% end %> <!-- if statement -->
+		<% end %>	<!-- loop -->
+	</ul>	
+</div>

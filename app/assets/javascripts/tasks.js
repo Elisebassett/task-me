@@ -7,13 +7,9 @@ $(document).on('turbolinks:load', function(){
   $('.collapsible').collapsible();
   $('ul.tabs').tabs();
 
-  $('.checkbox').on("ajax:success", function(e){
-  	console.log('checked!');
-  });
-
   $(document).on('ajax:success', '.destroy_task', function(){
 		$(this).closest('.task-container').remove();
-		$('.' + window.task_container).remove(); 
+		$(window.task_container).remove(); 
 	});
 
 });

@@ -19,15 +19,16 @@ class TasksController < ApplicationController
   end
 
   def update
-    Task.find(params[:id]).update(task_params)
+    @tasks = current_user.tasks.all
+    @task = Task.find(params[:id]).update(task_params)
     redirect_to current_user
   end
 
   def destroy
-    @task = Task.find(params[:id]).destroy
     respond_to do |format|
+      @task = Task.find(params[:id]).destroy
       format.js
-      format.html {redirect_to user_path}
+      format.html{redirect_to @user}
     end
     # redirect_to current_user
   end
