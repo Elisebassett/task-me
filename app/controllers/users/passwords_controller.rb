@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Remove this file - nothing is overridden.
 class Users::PasswordsController < Devise::PasswordsController
   # GET /resource/password/new
   # def new

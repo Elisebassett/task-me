@@ -6,10 +6,17 @@ git_source(:github) do |repo_name|
 end
 
 # jquery essential
+# Consider using https://github.com/stimulusjs/stimulus instead of jQuery,
+# DHH endorses it, it works nice with Webpacker - a new way to bundle NPM/Yarn packages.
+# "gem"-ified JS libs are a thing of the past (IMHO)
 gem 'jquery-rails'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+# Upgrade to latest Rails: keeping things up to date is simple and it shows up as activity on your Github
 gem 'rails', '~> 5.1.4'
 # Use sqlite3 as the database for Active Record
+# Maybe switch to a real database: Postgresql, this would let you deploy your app to Heroku.
+# BTW, it's totally easy and free and it is a bit of experience you can add to your resume,
+# + a link to your deployed application.
 gem 'sqlite3'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
@@ -23,6 +30,7 @@ gem 'uglifier', '>= 1.3.0'
 # gem 'therubyracer', platforms: :ruby
 
 # Use CoffeeScript for .coffee assets and views
+# Comment this out: no one uses Coffee Script anymore, except for DHH/Basecamp :)
 gem 'coffee-rails', '~> 4.2'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
@@ -39,7 +47,6 @@ gem 'jbuilder', '~> 2.5'
 # devise
 gem 'devise'
 
-
 # cleanup gems
 gem 'bootsnap', require: false
 
@@ -50,6 +57,9 @@ group :development, :test do
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
 end
+
+# Consider adding a https://github.com/bbatsov/rubocop gem - to maintain the high code quality
+# When you run it - it will point out a lot of code smells and issues.
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
@@ -62,4 +72,5 @@ group :development do
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
+# It is OK to delete this line, it's not needed on a Mac or Linux.
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

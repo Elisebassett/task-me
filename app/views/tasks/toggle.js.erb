@@ -1,3 +1,35 @@
+// I haven't seen people use *.js.erb a lot, usually if you've building some
+// dynamic webpage, you either use ReactJS for it and call backend just for data (REST API, or GraphQL),
+// or you write JS code in separate JS files that listen for events and react.
+//
+// Smaller apps compile all of their JS files into ONE jS bundle, which is then included in the layout.
+// Here's an example of the application.js (entrypoint):
+
+// See Webpacker documentation for examples: https://github.com/rails/webpacker
+
+import flatPickr from 'flatpickr';
+
+import initPaymentPage from './app/payment-page';
+import initAccordions from './app/accordions';
+
+const componentRequireContext = require.context('components', true);
+const ReactRailsUJS = require('react_ujs');
+
+ReactRailsUJS.useContext(componentRequireContext);
+
+$(document).on('turbolinks:load', () => {
+  initBurgers();
+  initPaymentPage();
+  initAccordions();
+
+  flatPickr('input.datepicker', {
+    enableTime: true,
+    minDate: 'today',
+    altInput: true,
+  });
+});
+
+
 //renders both lists on checkbox boolean toggle and ajax:success
 $('#list-container').html("<%= j render 'tasks/lists', tasks: @tasks %> ");
 //materialization task accordian display initialization

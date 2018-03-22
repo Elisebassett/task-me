@@ -1,4 +1,4 @@
-class TasksController < ApplicationController
+class TasksController < AuthenticatedController
   def index
   end
 
@@ -23,13 +23,13 @@ class TasksController < ApplicationController
     redirect_to current_user
   end
   
-  # toggle method is run when complete checkbox is clicked
+  # Toggle method is run when complete checkbox is clicked.
   def toggle
     @tasks = current_user.tasks.all
     @task = Task.find(params[:id]).update(task_params)
     respond_to do |format|
       format.js
-      format.html{redirect_to @user}
+      format.html { redirect_to @user }
     end
   end
 
@@ -37,7 +37,7 @@ class TasksController < ApplicationController
     respond_to do |format|
       @task = Task.find(params[:id]).destroy
       format.js
-      format.html{redirect_to @user}
+      format.html { redirect_to @user }
     end
     # redirect_to current_user
   end
@@ -47,5 +47,4 @@ class TasksController < ApplicationController
   def task_params
     params.require(:task).permit(:title, :description, :complete)
   end
-
 end
