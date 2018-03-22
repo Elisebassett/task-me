@@ -1,3 +1,10 @@
+# This file probably doesn't belong in the repo: it needs to be deleted
+# and added to .gitignore. Routes are auto-generated off of your config/routes.rb file.
+#
+# Same with task_me_db.pdf - PDF files are sort of binary and it is in general
+# not a good idea to keep binary files in a Git repo.
+#
+# Same with wireframes: binary files.
                   Prefix Verb   URI Pattern                    Controller#Action
                user_show GET    /user/show(.:format)           user#show
         new_user_session GET    /users/sign_in(.:format)       users/sessions#new

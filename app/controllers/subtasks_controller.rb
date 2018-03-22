@@ -1,4 +1,4 @@
-class SubtasksController < ApplicationController
+class SubtasksController < AuthenticatedController
   def index
   end
 
